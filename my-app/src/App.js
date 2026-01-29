@@ -3,24 +3,20 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          first project of react.
-        <button className='button'>Press to learn react</button>
+   <> 
+   <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
+     <div className="logo">
+       <a className="navbar-brand" href="#">Usama.Dev</a>
 
-        </a>
-      </header>
-    </div>
+     </div>
+     <div className="container-fluid">   
+       <a className="navbar-brand" href="#">Home</a>
+       <a className="navbar-brand" href="#">About</a>
+       <a className="navbar-brand" href="#">Skills</a>
+       <a className="navbar-brand" href="#">Contact</a>
+     </div>
+   </nav>
+   </>
   );
 }
 

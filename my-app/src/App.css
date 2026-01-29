@@ -48,3 +48,23 @@
   margin-top: 20px;
   cursor: pointer;
 }
+navbar {
+  margin-bottom: 20px;
+}
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #fff;
+}
+nav a:hover {
+  text-decoration: underline;
+  color:#61dafb;
+}
+nav {
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+  background-color: #1a1a17;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
