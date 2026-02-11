@@ -34,6 +34,20 @@ const Navbar = (props) => {
                 </a>
               </li>
             </ul>
+            <div className={`form-check form-switch`}>
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  id="switchCheckDefault"
+                  onClick = {props.toggleMode1}
+                  checked={props.mode === "green"}
+                />
+                <label
+                  className="form-check-label"
+                  htmlFor="switchCheckDefault"
+                >Enable Green Mode</label>
+              </div>
             
               <div className={`form-check form-switch`}>
                 <input
@@ -42,6 +56,8 @@ const Navbar = (props) => {
                   role="switch"
                   id="switchCheckDefault"
                   onClick = {props.toggleMode}
+                  checked={props.mode === "dark"}
+
                 />
                 <label
                   className="form-check-label"

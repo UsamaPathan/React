@@ -2,40 +2,73 @@ import React, { useState } from "react";
 
 export default function TextForm(props) {
   const handleUpCase = () => {
+    if (text.trim().length === 0) {
+      props.showAlert("Please enter some text first", "warning");
+      return;
+    } 
+
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Text converted to uppercase", "success");
   };
-  const handleLowCase = () => {
-    let newText = text.toLowerCase();
-    setText(newText);
-  };
+
+ const handleLowCase = () => {
+  if (text.trim().length === 0) {
+    props.showAlert("Please enter some text first", "warning");
+    return;
+  }
+
+  let newText = text.toLowerCase();
+  setText(newText);
+  props.showAlert("Text converted to lowercase", "success");
+};
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
   const handleClearText = (event) => {
+    if (text.trim().length === 0) {
+      props.showAlert("Text is already empty", "warning");
+      return;
+    }
     setText("");
+    props.showAlert("Text cleared", "success");
   };
   const handleDownload = () => {
+    if (text.trim().length === 0) {
+      props.showAlert("Please enter some text to download", "warning");
+      return;
+    }
     const element = document.createElement("a");
     if (text.length === 0) {
-      alert("Please enter some text to download");
+      props.showAlert("Please enter some text to download", "warning");
     } else {
       const file = new Blob([text], { type: "text/plain" });
       element.href = URL.createObjectURL(file);
       element.download = "myTextFile.txt";
       document.body.appendChild(element);
       element.click();
+        props.showAlert("Text file downloaded successfully", "success");
     }
     
   };
  
   const handleCopy =() => {
+    if (text.trim().length === 0) {
+      props.showAlert("Please enter some text to copy", "warning");
+      return;
+    }
       navigator.clipboard.writeText(text);
+        props.showAlert("Text copied to clipboard", "success");
     }
 
     const handleExtraSpace = ()=> {
+    if (text.trim().length === 0) {
+      props.showAlert("Please enter some text first", "warning");
+      return;
+    }
       let newText = text.split(/[ ]+/);
       setText(newText.join(" "));
+        props.showAlert("Extra spaces removed", "success");
     }
 
   const [text, setText] = useState("");
@@ -50,7 +83,7 @@ export default function TextForm(props) {
             value={text}
             onChange={handleOnChange}
             rows="10"
-            style = {{backgroundColor: props.mode === "dark" ? "#2c2b2b" : "white", color: props.mode === "dark" ? "white" : "black"}}
+            style = {{backgroundColor: props.mode === "dark" ? "#2c2b2b" : props.mode === "green" ? "rgba(172, 233, 172, 0.73)" : "white", color: props.mode === "dark" ? "white" : props.mode === "green" ? "black" : "black"}}  
           ></textarea>
           <button
             className="btn btn-outline-primary mt-3 ms-1"
