@@ -1,7 +1,19 @@
 import React, {useState} from 'react'
 import Navbar from './components/Navbar'
+import About from './components/About'
 import TextForm from './components/TextForm'
 import Alert from './components/Alert'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+import ReactDOM from "react-dom/client";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+
 
 
  function App() {
@@ -60,11 +72,41 @@ import Alert from './components/Alert'
 
   return (
     <>
-    <Navbar title="TextUtils" about="About" mode={mode} toggleMode={toggleMode}  toggleMode1={toggleMode1} />
-    <Alert alert = {alert}/>
-    <div className="container my-5">
-    <TextForm heading="Please enter text below to analyze" mode={mode} showAlert={showAlert} toggleMode1={toggleMode1}/>
-    </div>
+   <Router>
+  <Navbar 
+    title="TextUtils" 
+    about="About" 
+    mode={mode} 
+    toggleMode={toggleMode}  
+    toggleMode1={toggleMode1} 
+  />
+
+  <Alert alert={alert} />
+
+  <Routes>
+
+    <Route 
+      path="/about" 
+      element={<About />} 
+    />
+
+    <Route 
+      path="/" 
+      element={
+        <div className="container my-5">
+          <TextForm 
+            heading="Please enter text below to analyze" 
+            mode={mode} 
+            showAlert={showAlert} 
+            toggleMode1={toggleMode1}
+          />
+        </div>
+      } 
+    />
+
+  </Routes>
+
+</Router>
     </>
   )
 }
